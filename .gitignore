@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+dev-dist/
+
+# Environment secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local planning & workflow docs
+AGENT.md
+PHASES.md
+SYSTEM_ANALYSIS.md

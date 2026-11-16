@@ -1,0 +1,265 @@
+/* ==========================================================================
+   ShelfLog — Save Slot Intro Splash Animation
+   Guided by PWA2_PrakPPB SplashScreen.css
+   ========================================================================== */
+
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 42%, #1e2a35 0%, #0d131a 48%, #070a0e 82%);
+  isolation: isolate;
+  z-index: 99999;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.splash-overlay--fading {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-mark {
+  position: absolute;
+  left: 50%;
+  top: 26%;
+  width: min(65vw, 38vh, 260px);
+  aspect-ratio: 1;
+  object-fit: contain;
+  transform: translate(-50%, 0) translateY(-40vh) scale(0.92);
+  opacity: 0;
+  animation: splash-drop 1.4s cubic-bezier(0.18, 0.85, 0.25, 1) 0.08s forwards,
+             splash-glow 1.4s ease-out 1.5s forwards;
+  pointer-events: none;
+}
+
+.splash-trail {
+  position: absolute;
+  left: -50%;
+  top: 46%;
+  width: 58vw;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #a67c2e, #e5ba68, transparent);
+  filter: blur(3px);
+  opacity: 0;
+  animation: splash-trail 1.2s ease-out 0.15s forwards;
+  pointer-events: none;
+}
+
+.splash-flash {
+  position: absolute;
+  inset: 0;
+  background: #f6e7c6;
+  opacity: 0;
+  pointer-events: none;
+  animation: splash-flash 0.25s ease-out 1.45s;
+}
+
+.splash-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  animation: splash-gridIn 0.7s ease-out 1.45s forwards;
+}
+
+.splash-grid path {
+  fill: none;
+  stroke: rgba(166, 124, 46, 0.28);
+  stroke-width: 1.4;
+}
+
+.splash-overlay.hit {
+  animation: splash-shake 0.32s linear;
+}
+
+.splash-brand {
+  position: absolute;
+  top: 72%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: splash-brandIn 0.8s ease-out 1.85s forwards;
+  color: #f2f4f5;
+  pointer-events: none;
+}
+
+.splash-brand-name {
+  font-family: 'Arial Narrow', 'Franklin Gothic Medium', system-ui, sans-serif;
+  font-size: clamp(32px, 6vw, 48px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+}
+
+.splash-brand-sub {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: #d6a449;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.splash-brand::after {
+  content: '';
+  display: block;
+  width: 84px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #a67c2e, transparent);
+  margin: 16px auto 0;
+}
+
+.splash-skip-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(24, 34, 44, 0.75);
+  border: 1px solid rgba(166, 124, 46, 0.5);
+  border-radius: 9999px;
+  color: #f2f4f5;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  animation: splash-skipIn 0.5s ease-out 0.9s forwards;
+  transition: all 0.2s ease;
+}
+
+.splash-skip-btn:hover {
+  background: rgba(166, 124, 46, 0.25);
+  border-color: #d6a449;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.splash-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 24px;
+  font-size: 11px;
+  color: rgba(242, 244, 245, 0.42);
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: splash-skipIn 0.5s ease-out 1.6s forwards;
+  pointer-events: none;
+}
+
+@keyframes splash-drop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -28vh) scale(0.92);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, 6px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@keyframes splash-trail {
+  0% {
+    opacity: 0;
+    left: -35%;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    left: 50%;
+  }
+}
+
+@keyframes splash-flash {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes splash-gridIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splash-shake {
+  0%, 100% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(-4px, 2px);
+  }
+  50% {
+    transform: translate(4px, -2px);
+  }
+  75% {
+    transform: translate(-2px, 1px);
+  }
+}
+
+@keyframes splash-glow {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(166, 124, 46, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(166, 124, 46, 0.55));
+  }
+  100% {
+    filter: drop-shadow(0 0 12px rgba(166, 124, 46, 0.25));
+  }
+}
+
+@keyframes splash-brandIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splash-skipIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-overlay *,
+  .splash-overlay *::before,
+  .splash-overlay *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
