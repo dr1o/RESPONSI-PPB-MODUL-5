@@ -20,7 +20,7 @@ dev-dist/
 .DS_Store
 Thumbs.db
 
-# Local planning & workflow docs
+# Local planning notes
 AGENT.md
 PHASES.md
 SYSTEM_ANALYSIS.md

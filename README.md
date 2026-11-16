@@ -29,7 +29,7 @@
    VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
    ```
    > Never place `sb_secret_...` keys in `.env` or frontend code.
-3. Run the database & storage SQL script in [supabase/schema.sql](supabase/schema.sql) inside your Supabase SQL Editor.
+3. Ensure your Supabase project has the `public.games`, `public.game_favorites`, and `public.game_logs` tables (with RLS policies) plus the public `game-covers` Storage bucket configured.
 4. Start development or production preview:
    ```bash
    npm run dev      # local development server
@@ -46,3 +46,4 @@
    - `VITE_API_BASE_URL`
    - `VITE_SUPABASE_PUBLISHABLE_KEY`
 4. Deploy — [vercel.json](vercel.json) configures SPA rewrites and Service Worker / Manifest headers automatically.
+
